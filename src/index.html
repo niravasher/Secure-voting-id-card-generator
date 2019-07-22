@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>voting ID card generator</title>
+
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="app.js"></script>
+
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="text-center mt-5">A simple blockchain based voting system</h1>
+        <hr>
+        <p class="text-center">Apply for a new voter id card</p>
+
+        <form action="/action_page.php">
+            <div class="form-group">
+                <label for="name">First Name</label>
+                <input type="text" class="form-control" id="firstName">
+            </div>
+            <div class="form-group">
+                <label for="name">Father's Name</label>
+                <input type="text" class="form-control" id="fathersName">
+            </div>
+            <div class="form-group">
+                <label for="name">Last Name</label>
+                <input type="text" class="form-control" id="lastName">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label><br>
+                <label class="radio-inline"><input type="radio" name="optradio" checked>Male</label>&ensp;
+                <label class="radio-inline"><input type="radio" name="optradio">Female</label>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="DD">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address">
+            </div>
+            <div class="form-group">
+                <label for="photo">Upload Photo</label>
+                <input type="file" name="pic" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="proof">Upload ID proof</label>
+                <input type="file" name="pic" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button><br><br>
+        </form>
+    </div>
+
+</body>
+</html>
