@@ -4,10 +4,12 @@ contract Cards {
     uint public voteCount = 0;
 
     struct Detail {
-        string name;
-        uint date;
-        uint month;
-        bool completed;
+        string firstName;
+        string fathersName;
+        string lastName;
+        string gender;
+        date _date;
+        string address;
     }
 
     Detail[] public details;

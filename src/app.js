@@ -59,14 +59,34 @@ App = {
     render: async () => {
         // Render account
         $("#account").html(App.account);
-
-        await App.renderVariables()
     },
+}
 
-    renderVariables: async () => {
-        const firstName = await App.voting;
-        console.log(firstName);
+function saveData() {
+    var firstName = $("#firstName").val();
+    var fathersName = $("#fathersName").val();
+    var lastName = $("#lastName").val();
+    if ($('#male').is(":checked"))
+    {
+        var gender = "male";
+    } else {
+        var gender = "female";
     }
+    var date =  $("#DD").val();
+    var address = $("#address").val();
+    var photo = $("#photo").val();
+    var proof = $("#proof").val();
+    console.log(firstName, fathersName, lastName, gender, date, address);
+
+    const detail = await App.voting.details(0);
+    detail[0] = firstName;
+    detail[1] = fathersName;
+    detail[2] = lastName;
+    detail[3] = gender;
+    detail[4] = date;
+    detail[5] = address;
+    detail[6] = photo;
+    detail[7] = proof;
 }
 
 $(() => {
