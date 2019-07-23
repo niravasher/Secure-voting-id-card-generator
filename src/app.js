@@ -1,7 +1,11 @@
 App = {
+    contracts: {},
+
     load: async () => {
         await App.loadWeb3()
         await App.loadAccount()
+        await App.loadContract()
+        await App.render()
     },
 
     loadWeb3: async () => {
@@ -39,7 +43,29 @@ App = {
     loadAccount: async () => {
         // Set the current blockchain account
         App.account = web3.eth.accounts[0]
-        console.log(App.account)
+    },
+
+    loadContract: async () => {
+        // Create a JavaScript version of the smart contract
+        const voting = await $.getJSON('Voting.json')
+        // console.log(voting);
+        App.contracts.Voting = TruffleContract(voting)
+        App.contracts.Voting.setProvider(App.web3Provider)
+    
+        // Hydrate the smart contract with values from the blockchain
+        App.voting = await App.contracts.Voting.deployed()
+    },
+
+    render: async () => {
+        // Render account
+        $("#account").html(App.account);
+
+        await App.renderVariables()
+    },
+
+    renderVariables: async () => {
+        const firstName = await App.voting;
+        console.log(firstName);
     }
 }
 

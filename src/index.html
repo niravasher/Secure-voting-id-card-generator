@@ -19,20 +19,20 @@
     <div class="container">
         <h1 class="text-center mt-5">A simple blockchain based voting system</h1>
         <hr>
-        <p class="text-center">Apply for a new voter id card</p>
+        <p class="text-center" id="account">Apply for a new voter id card</p>
 
         <form action="/action_page.php">
             <div class="form-group">
                 <label for="name">First Name</label>
-                <input type="text" class="form-control" id="firstName">
+                <input type="text" class="form-control" id="firstName" required>
             </div>
             <div class="form-group">
                 <label for="name">Father's Name</label>
-                <input type="text" class="form-control" id="fathersName">
+                <input type="text" class="form-control" id="fathersName" required>
             </div>
             <div class="form-group">
                 <label for="name">Last Name</label>
-                <input type="text" class="form-control" id="lastName">
+                <input type="text" class="form-control" id="lastName" required>
             </div>
             <div class="form-group">
                 <label for="gender">Gender</label><br>
@@ -40,20 +40,20 @@
                 <label class="radio-inline"><input type="radio" name="optradio">Female</label>
             </div>
             <div class="form-group">
-                <label for="date">Date</label>
-                <input type="date" class="form-control" id="DD">
+                <label for="date">Birth Date</label>
+                <input type="date" class="form-control" id="DD" required>
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" id="address">
+                <input type="text" class="form-control" id="address" required>
             </div>
             <div class="form-group">
                 <label for="photo">Upload Photo</label>
-                <input type="file" name="pic" accept="image/*">
+                <input type="file" name="pic" accept="image/*" required>
             </div>
             <div class="form-group">
                 <label for="proof">Upload ID proof</label>
-                <input type="file" name="pic" accept="image/*">
+                <input type="file" name="pic" accept="image/*" required>
             </div>
             <button type="submit" class="btn btn-default">Submit</button><br><br>
         </form>

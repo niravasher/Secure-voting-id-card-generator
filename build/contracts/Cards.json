@@ -3,6 +3,37 @@
   "abi": [
     {
       "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "details",
+      "outputs": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "uint256"
+        },
+        {
+          "name": "month",
+          "type": "uint256"
+        },
+        {
+          "name": "completed",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
       "inputs": [],
       "name": "voteCount",
       "outputs": [
@@ -44,21 +75,21 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_content\",\"type\":\"string\"},{\"name\":\"date\",\"type\":\"uint256\"},{\"name\":\"month\",\"type\":\"uint256\"}],\"name\":\"generateCard\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"voteCount\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/nirav/Documents/voting/contracts/Voting.sol\":\"Cards\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/nirav/Documents/voting/contracts/Voting.sol\":{\"keccak256\":\"0xeeab45b940b2f74176998e79ecc63258856abcb94b55c766cb25853fc6e6dc46\",\"urls\":[\"bzzr://5e62562e3ae2a4832279ce0f79296bb2de63188cfd021e766cc1bbd572674347\"]}},\"version\":1}",
-  "bytecode": "0x60806040526000805534801561001457600080fd5b5061005d6040518060400160405280600581526020017f6e697261760000000000000000000000000000000000000000000000000000008152506003600861006260201b60201c565b610085565b604080516080810182529384526020840192909252908201526000606090910152565b610157806100946000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c8063af619b101461003b578063c6384071146100e8575b600080fd5b6100e66004803603606081101561005157600080fd5b81019060208101813564010000000081111561006c57600080fd5b82018360208201111561007e57600080fd5b803590602001918460018302840111640100000000831117156100a057600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295505082359350505060200135610102565b005b6100f0610125565b60408051918252519081900360200190f35b604080516080810182529384526020840192909252908201526000606090910152565b6000548156fea165627a7a72305820076b3e4d8dcecae0e6e6d80e67b2b7a74bd86ebd0d9f167b08e5c9e2aaf1d1c20029",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c8063af619b101461003b578063c6384071146100e8575b600080fd5b6100e66004803603606081101561005157600080fd5b81019060208101813564010000000081111561006c57600080fd5b82018360208201111561007e57600080fd5b803590602001918460018302840111640100000000831117156100a057600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295505082359350505060200135610102565b005b6100f0610125565b60408051918252519081900360200190f35b604080516080810182529384526020840192909252908201526000606090910152565b6000548156fea165627a7a72305820076b3e4d8dcecae0e6e6d80e67b2b7a74bd86ebd0d9f167b08e5c9e2aaf1d1c20029",
-  "sourceMap": "25:368:1:-;;;70:1;46:25;;190:65;8:9:-1;5:2;;;30:1;27;20:12;5:2;190:65:1;221:27;;;;;;;;;;;;;;;;;;243:1;246;221:12;;;:27;;:::i;:::-;25:368;;261:130;347:37;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;347:37:1;;;;;261:130::o;25:368::-;;;;;;;",
-  "deployedSourceMap": "25:368:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:368:1;;;;;;;;;;;;;;;;;;;;;;;;261:130;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;261:130:1;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;261:130:1;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;261:130:1;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;261:130:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;261:130:1;;-1:-1:-1;;261:130:1;;;-1:-1:-1;;;261:130:1;;;;:::i;:::-;;46:25;;;:::i;:::-;;;;;;;;;;;;;;;;261:130;347:37;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;347:37:1;;;;;261:130::o;46:25::-;;;;:::o",
-  "source": "pragma solidity ^0.5.0;\n\ncontract Cards {\n    uint public voteCount = 0;\n\n    struct details {\n        string name;\n        uint date;\n        uint month;\n        bool completed;\n    }\n\n    constructor() public {\n        generateCard(\"nirav\", 3, 8);\n    }\n\n    function generateCard(string memory _content, uint date, uint month) public {\n        details(_content, date, month, false);\n    }\n}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"details\",\"outputs\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"date\",\"type\":\"uint256\"},{\"name\":\"month\",\"type\":\"uint256\"},{\"name\":\"completed\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_content\",\"type\":\"string\"},{\"name\":\"date\",\"type\":\"uint256\"},{\"name\":\"month\",\"type\":\"uint256\"}],\"name\":\"generateCard\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"voteCount\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/nirav/Documents/voting/contracts/Voting.sol\":\"Cards\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/nirav/Documents/voting/contracts/Voting.sol\":{\"keccak256\":\"0x00665ddd5338d770cbd357f9e1165871daecc67fb2bd19c893f56607672e452d\",\"urls\":[\"bzzr://de6688ff02cc835cf5b7fc60c1bfba806aa89e8d832d6f7c5a3c9a122c7f8fd7\"]}},\"version\":1}",
+  "bytecode": "0x60806040526000805534801561001457600080fd5b5061005d6040518060400160405280600581526020017f6e697261760000000000000000000000000000000000000000000000000000008152506003600861006260201b60201c565b61018e565b60405180608001604052808481526020018381526020018281526020016000151581525060016000548154811061009557fe5b906000526020600020906004020160008201518160000190805190602001906100bf9291906100f3565b5060208201516001820155604082015160028201556060909101516003909101805460ff1916911515919091179055505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061013457805160ff1916838001178555610161565b82800160010185558215610161579182015b82811115610161578251825591602001919060010190610146565b5061016d929150610171565b5090565b61018b91905b8082111561016d5760008155600101610177565b90565b6103e08061019d6000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c8063a005ec7a14610046578063af619b10146100f4578063c6384071146101a1575b600080fd5b6100636004803603602081101561005c57600080fd5b50356101bb565b604051808060200185815260200184815260200183151515158152602001828103825286818151815260200191508051906020019080838360005b838110156100b657818101518382015260200161009e565b50505050905090810190601f1680156100e35780820380516001836020036101000a031916815260200191505b509550505050505060405180910390f35b61019f6004803603606081101561010a57600080fd5b81019060208101813564010000000081111561012557600080fd5b82018360208201111561013757600080fd5b8035906020019184600183028401116401000000008311171561015957600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295505082359350505060200135610282565b005b6101a9610313565b60408051918252519081900360200190f35b600181815481106101c857fe5b60009182526020918290206004919091020180546040805160026001841615610100026000190190931692909204601f8101859004850283018501909152808252919350918391908301828280156102615780601f1061023657610100808354040283529160200191610261565b820191906000526020600020905b81548152906001019060200180831161024457829003601f168201915b50505050600183015460028401546003909401549293909290915060ff1684565b6040518060800160405280848152602001838152602001828152602001600015158152506001600054815481106102b557fe5b906000526020600020906004020160008201518160000190805190602001906102df929190610319565b5060208201516001820155604082015160028201556060909101516003909101805460ff1916911515919091179055505050565b60005481565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061035a57805160ff1916838001178555610387565b82800160010185558215610387579182015b8281111561038757825182559160200191906001019061036c565b50610393929150610397565b5090565b6103b191905b80821115610393576000815560010161039d565b9056fea165627a7a7230582021152b8f1d041f8836b46ccbd53f0c4a2c067f77e4d5e0ddda2351e375bddecf0029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c8063a005ec7a14610046578063af619b10146100f4578063c6384071146101a1575b600080fd5b6100636004803603602081101561005c57600080fd5b50356101bb565b604051808060200185815260200184815260200183151515158152602001828103825286818151815260200191508051906020019080838360005b838110156100b657818101518382015260200161009e565b50505050905090810190601f1680156100e35780820380516001836020036101000a031916815260200191505b509550505050505060405180910390f35b61019f6004803603606081101561010a57600080fd5b81019060208101813564010000000081111561012557600080fd5b82018360208201111561013757600080fd5b8035906020019184600183028401116401000000008311171561015957600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295505082359350505060200135610282565b005b6101a9610313565b60408051918252519081900360200190f35b600181815481106101c857fe5b60009182526020918290206004919091020180546040805160026001841615610100026000190190931692909204601f8101859004850283018501909152808252919350918391908301828280156102615780601f1061023657610100808354040283529160200191610261565b820191906000526020600020905b81548152906001019060200180831161024457829003601f168201915b50505050600183015460028401546003909401549293909290915060ff1684565b6040518060800160405280848152602001838152602001828152602001600015158152506001600054815481106102b557fe5b906000526020600020906004020160008201518160000190805190602001906102df929190610319565b5060208201516001820155604082015160028201556060909101516003909101805460ff1916911515919091179055505050565b60005481565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061035a57805160ff1916838001178555610387565b82800160010185558215610387579182015b8281111561038757825182559160200191906001019061036c565b50610393929150610397565b5090565b6103b191905b80821115610393576000815560010161039d565b9056fea165627a7a7230582021152b8f1d041f8836b46ccbd53f0c4a2c067f77e4d5e0ddda2351e375bddecf0029",
+  "sourceMap": "25:417:1:-;;;70:1;46:25;;219:65;8:9:-1;5:2;;;30:1;27;20:12;5:2;219:65:1;250:27;;;;;;;;;;;;;;;;;;272:1;275;250:12;;;:27;;:::i;:::-;25:417;;290:150;397:36;;;;;;;;404:8;397:36;;;;414:4;397:36;;;;420:5;397:36;;;;427:5;397:36;;;;;376:7;384:9;;376:18;;;;;;;;;;;;;;;;;;:57;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;376:57:1;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;376:57:1;;;;;;;;;;-1:-1:-1;;;290:150:1:o;25:417::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;25:417:1;;;-1:-1:-1;25:417:1;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "25:417:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:417:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;189:23;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;189:23:1;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;189:23:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;290:150;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;290:150:1;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;290:150:1;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;290:150:1;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;290:150:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;290:150:1;;-1:-1:-1;;290:150:1;;;-1:-1:-1;;;290:150:1;;;;:::i;:::-;;46:25;;;:::i;:::-;;;;;;;;;;;;;;;;189:23;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;189:23:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;189:23:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;189:23:1;;;;;;;;;;;;;;;;;;;-1:-1:-1;189:23:1;;;:::o;290:150::-;397:36;;;;;;;;404:8;397:36;;;;414:4;397:36;;;;420:5;397:36;;;;427:5;397:36;;;;;376:7;384:9;;376:18;;;;;;;;;;;;;;;;;;:57;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;376:57:1;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;376:57:1;;;;;;;;;;-1:-1:-1;;;290:150:1:o;46:25::-;;;;:::o;25:417::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;25:417:1;;;-1:-1:-1;25:417:1;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\ncontract Cards {\n    uint public voteCount = 0;\n\n    struct Detail {\n        string name;\n        uint date;\n        uint month;\n        bool completed;\n    }\n\n    Detail[] public details;\n\n    constructor() public {\n        generateCard(\"nirav\", 3, 8);\n    }\n\n    function generateCard(string memory _content, uint date, uint month) public {\n        details[voteCount] = Detail(_content, date, month, false);\n    }\n}",
   "sourcePath": "/home/nirav/Documents/voting/contracts/Voting.sol",
   "ast": {
     "absolutePath": "/home/nirav/Documents/voting/contracts/Voting.sol",
     "exportedSymbols": {
       "Cards": [
-        98
+        105
       ]
     },
-    "id": 99,
+    "id": 106,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -78,9 +109,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 98,
+        "id": 105,
         "linearizedBaseContracts": [
-          98
+          105
         ],
         "name": "Cards",
         "nodeType": "ContractDefinition",
@@ -90,7 +121,7 @@
             "id": 61,
             "name": "voteCount",
             "nodeType": "VariableDeclaration",
-            "scope": 98,
+            "scope": 105,
             "src": "46:25:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -129,7 +160,7 @@
             "visibility": "public"
           },
           {
-            "canonicalName": "Cards.details",
+            "canonicalName": "Cards.Detail",
             "id": 70,
             "members": [
               {
@@ -138,7 +169,7 @@
                 "name": "name",
                 "nodeType": "VariableDeclaration",
                 "scope": 70,
-                "src": "103:11:1",
+                "src": "102:11:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -149,7 +180,7 @@
                   "id": 62,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "103:6:1",
+                  "src": "102:6:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -164,7 +195,7 @@
                 "name": "date",
                 "nodeType": "VariableDeclaration",
                 "scope": 70,
-                "src": "124:9:1",
+                "src": "123:9:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -175,7 +206,7 @@
                   "id": 64,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "124:4:1",
+                  "src": "123:4:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -190,7 +221,7 @@
                 "name": "month",
                 "nodeType": "VariableDeclaration",
                 "scope": 70,
-                "src": "143:10:1",
+                "src": "142:10:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -201,7 +232,7 @@
                   "id": 66,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "143:4:1",
+                  "src": "142:4:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -216,7 +247,7 @@
                 "name": "completed",
                 "nodeType": "VariableDeclaration",
                 "scope": 70,
-                "src": "163:14:1",
+                "src": "162:14:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -227,7 +258,7 @@
                   "id": 68,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "163:4:1",
+                  "src": "162:4:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -237,17 +268,55 @@
                 "visibility": "internal"
               }
             ],
-            "name": "details",
+            "name": "Detail",
             "nodeType": "StructDefinition",
-            "scope": 98,
-            "src": "78:106:1",
+            "scope": 105,
+            "src": "78:105:1",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 73,
+            "name": "details",
+            "nodeType": "VariableDeclaration",
+            "scope": 105,
+            "src": "189:23:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Detail_$70_storage_$dyn_storage",
+              "typeString": "struct Cards.Detail[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 71,
+                "name": "Detail",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 70,
+                "src": "189:6:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Detail_$70_storage_ptr",
+                  "typeString": "struct Cards.Detail"
+                }
+              },
+              "id": 72,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "189:8:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Detail_$70_storage_$dyn_storage_ptr",
+                "typeString": "struct Cards.Detail[]"
+              }
+            },
+            "value": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 79,
+              "id": 82,
               "nodeType": "Block",
-              "src": "211:44:1",
+              "src": "240:44:1",
               "statements": [
                 {
                   "expression": {
@@ -256,14 +325,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "6e69726176",
-                        "id": 74,
+                        "id": 77,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "234:7:1",
+                        "src": "263:7:1",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_103e4749012957f5a3ea8f2293b39cce5fb863f8fe36269a464fe2daaf995a67",
@@ -274,14 +343,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "33",
-                        "id": 75,
+                        "id": 78,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "243:1:1",
+                        "src": "272:1:1",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_3_by_1",
@@ -292,14 +361,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "38",
-                        "id": 76,
+                        "id": 79,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "246:1:1",
+                        "src": "275:1:1",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_8_by_1",
@@ -323,18 +392,18 @@
                           "typeString": "int_const 8"
                         }
                       ],
-                      "id": 73,
+                      "id": 76,
                       "name": "generateCard",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 97,
-                      "src": "221:12:1",
+                      "referencedDeclaration": 104,
+                      "src": "250:12:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$_t_uint256_$_t_uint256_$returns$__$",
                         "typeString": "function (string memory,uint256,uint256)"
                       }
                     },
-                    "id": 77,
+                    "id": 80,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -342,179 +411,234 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "221:27:1",
+                    "src": "250:27:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 78,
+                  "id": 81,
                   "nodeType": "ExpressionStatement",
-                  "src": "221:27:1"
+                  "src": "250:27:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 80,
+            "id": 83,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 71,
+              "id": 74,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "201:2:1"
+              "src": "230:2:1"
             },
             "returnParameters": {
-              "id": 72,
+              "id": 75,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "211:0:1"
+              "src": "240:0:1"
             },
-            "scope": 98,
-            "src": "190:65:1",
+            "scope": 105,
+            "src": "219:65:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 96,
+              "id": 103,
               "nodeType": "Block",
-              "src": "337:54:1",
+              "src": "366:74:1",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "arguments": [
-                      {
-                        "argumentTypes": null,
-                        "id": 90,
-                        "name": "_content",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 82,
-                        "src": "355:8:1",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_string_memory_ptr",
-                          "typeString": "string memory"
-                        }
-                      },
-                      {
-                        "argumentTypes": null,
-                        "id": 91,
-                        "name": "date",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 84,
-                        "src": "365:4:1",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_uint256",
-                          "typeString": "uint256"
-                        }
-                      },
-                      {
-                        "argumentTypes": null,
-                        "id": 92,
-                        "name": "month",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 86,
-                        "src": "371:5:1",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_uint256",
-                          "typeString": "uint256"
-                        }
-                      },
-                      {
-                        "argumentTypes": null,
-                        "hexValue": "66616c7365",
-                        "id": 93,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": true,
-                        "kind": "bool",
-                        "lValueRequested": false,
-                        "nodeType": "Literal",
-                        "src": "378:5:1",
-                        "subdenomination": null,
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        },
-                        "value": "false"
-                      }
-                    ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_string_memory_ptr",
-                          "typeString": "string memory"
-                        },
-                        {
-                          "typeIdentifier": "t_uint256",
-                          "typeString": "uint256"
-                        },
-                        {
-                          "typeIdentifier": "t_uint256",
-                          "typeString": "uint256"
-                        },
-                        {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        }
-                      ],
-                      "id": 89,
-                      "name": "details",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 70,
-                      "src": "347:7:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_details_$70_storage_ptr_$",
-                        "typeString": "type(struct Cards.details storage pointer)"
-                      }
-                    },
-                    "id": 94,
+                    "id": 101,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
-                    "kind": "structConstructorCall",
                     "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "347:37:1",
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 92,
+                        "name": "details",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 73,
+                        "src": "376:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Detail_$70_storage_$dyn_storage",
+                          "typeString": "struct Cards.Detail storage ref[] storage ref"
+                        }
+                      },
+                      "id": 94,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 93,
+                        "name": "voteCount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 61,
+                        "src": "384:9:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "376:18:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Detail_$70_storage",
+                        "typeString": "struct Cards.Detail storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 96,
+                          "name": "_content",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 85,
+                          "src": "404:8:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 97,
+                          "name": "date",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 87,
+                          "src": "414:4:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 98,
+                          "name": "month",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 89,
+                          "src": "420:5:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "66616c7365",
+                          "id": 99,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "427:5:1",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "false"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        ],
+                        "id": 95,
+                        "name": "Detail",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 70,
+                        "src": "397:6:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_Detail_$70_storage_ptr_$",
+                          "typeString": "type(struct Cards.Detail storage pointer)"
+                        }
+                      },
+                      "id": 100,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "397:36:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Detail_$70_memory",
+                        "typeString": "struct Cards.Detail memory"
+                      }
+                    },
+                    "src": "376:57:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_details_$70_memory",
-                      "typeString": "struct Cards.details memory"
+                      "typeIdentifier": "t_struct$_Detail_$70_storage",
+                      "typeString": "struct Cards.Detail storage ref"
                     }
                   },
-                  "id": 95,
+                  "id": 102,
                   "nodeType": "ExpressionStatement",
-                  "src": "347:37:1"
+                  "src": "376:57:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 97,
+            "id": 104,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "generateCard",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 87,
+              "id": 90,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 82,
+                  "id": 85,
                   "name": "_content",
                   "nodeType": "VariableDeclaration",
-                  "scope": 97,
-                  "src": "283:22:1",
+                  "scope": 104,
+                  "src": "312:22:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -522,10 +646,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 81,
+                    "id": 84,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "283:6:1",
+                    "src": "312:6:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -536,11 +660,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 84,
+                  "id": 87,
                   "name": "date",
                   "nodeType": "VariableDeclaration",
-                  "scope": 97,
-                  "src": "307:9:1",
+                  "scope": 104,
+                  "src": "336:9:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -548,10 +672,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 83,
+                    "id": 86,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "307:4:1",
+                    "src": "336:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -562,11 +686,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 86,
+                  "id": 89,
                   "name": "month",
                   "nodeType": "VariableDeclaration",
-                  "scope": 97,
-                  "src": "318:10:1",
+                  "scope": 104,
+                  "src": "347:10:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -574,10 +698,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 85,
+                    "id": 88,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "318:4:1",
+                    "src": "347:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -587,35 +711,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "282:47:1"
+              "src": "311:47:1"
             },
             "returnParameters": {
-              "id": 88,
+              "id": 91,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "337:0:1"
+              "src": "366:0:1"
             },
-            "scope": 98,
-            "src": "261:130:1",
+            "scope": 105,
+            "src": "290:150:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 99,
-        "src": "25:368:1"
+        "scope": 106,
+        "src": "25:417:1"
       }
     ],
-    "src": "0:393:1"
+    "src": "0:442:1"
   },
   "legacyAST": {
     "absolutePath": "/home/nirav/Documents/voting/contracts/Voting.sol",
     "exportedSymbols": {
       "Cards": [
-        98
+        105
       ]
     },
-    "id": 99,
+    "id": 106,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -635,9 +759,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 98,
+        "id": 105,
         "linearizedBaseContracts": [
-          98
+          105
         ],
         "name": "Cards",
         "nodeType": "ContractDefinition",
@@ -647,7 +771,7 @@
             "id": 61,
             "name": "voteCount",
             "nodeType": "VariableDeclaration",
-            "scope": 98,
+            "scope": 105,
             "src": "46:25:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -686,7 +810,7 @@
             "visibility": "public"
           },
           {
-            "canonicalName": "Cards.details",
+            "canonicalName": "Cards.Detail",
             "id": 70,
             "members": [
               {
@@ -695,7 +819,7 @@
                 "name": "name",
                 "nodeType": "VariableDeclaration",
                 "scope": 70,
-                "src": "103:11:1",
+                "src": "102:11:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -706,7 +830,7 @@
                   "id": 62,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "103:6:1",
+                  "src": "102:6:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -721,7 +845,7 @@
                 "name": "date",
                 "nodeType": "VariableDeclaration",
                 "scope": 70,
-                "src": "124:9:1",
+                "src": "123:9:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -732,7 +856,7 @@
                   "id": 64,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "124:4:1",
+                  "src": "123:4:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -747,7 +871,7 @@
                 "name": "month",
                 "nodeType": "VariableDeclaration",
                 "scope": 70,
-                "src": "143:10:1",
+                "src": "142:10:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -758,7 +882,7 @@
                   "id": 66,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "143:4:1",
+                  "src": "142:4:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -773,7 +897,7 @@
                 "name": "completed",
                 "nodeType": "VariableDeclaration",
                 "scope": 70,
-                "src": "163:14:1",
+                "src": "162:14:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -784,7 +908,7 @@
                   "id": 68,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "163:4:1",
+                  "src": "162:4:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -794,17 +918,55 @@
                 "visibility": "internal"
               }
             ],
-            "name": "details",
+            "name": "Detail",
             "nodeType": "StructDefinition",
-            "scope": 98,
-            "src": "78:106:1",
+            "scope": 105,
+            "src": "78:105:1",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 73,
+            "name": "details",
+            "nodeType": "VariableDeclaration",
+            "scope": 105,
+            "src": "189:23:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Detail_$70_storage_$dyn_storage",
+              "typeString": "struct Cards.Detail[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 71,
+                "name": "Detail",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 70,
+                "src": "189:6:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Detail_$70_storage_ptr",
+                  "typeString": "struct Cards.Detail"
+                }
+              },
+              "id": 72,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "189:8:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Detail_$70_storage_$dyn_storage_ptr",
+                "typeString": "struct Cards.Detail[]"
+              }
+            },
+            "value": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 79,
+              "id": 82,
               "nodeType": "Block",
-              "src": "211:44:1",
+              "src": "240:44:1",
               "statements": [
                 {
                   "expression": {
@@ -813,14 +975,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "6e69726176",
-                        "id": 74,
+                        "id": 77,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "234:7:1",
+                        "src": "263:7:1",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_103e4749012957f5a3ea8f2293b39cce5fb863f8fe36269a464fe2daaf995a67",
@@ -831,14 +993,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "33",
-                        "id": 75,
+                        "id": 78,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "243:1:1",
+                        "src": "272:1:1",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_3_by_1",
@@ -849,14 +1011,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "38",
-                        "id": 76,
+                        "id": 79,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "246:1:1",
+                        "src": "275:1:1",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_8_by_1",
@@ -880,18 +1042,18 @@
                           "typeString": "int_const 8"
                         }
                       ],
-                      "id": 73,
+                      "id": 76,
                       "name": "generateCard",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 97,
-                      "src": "221:12:1",
+                      "referencedDeclaration": 104,
+                      "src": "250:12:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$_t_uint256_$_t_uint256_$returns$__$",
                         "typeString": "function (string memory,uint256,uint256)"
                       }
                     },
-                    "id": 77,
+                    "id": 80,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -899,179 +1061,234 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "221:27:1",
+                    "src": "250:27:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 78,
+                  "id": 81,
                   "nodeType": "ExpressionStatement",
-                  "src": "221:27:1"
+                  "src": "250:27:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 80,
+            "id": 83,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 71,
+              "id": 74,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "201:2:1"
+              "src": "230:2:1"
             },
             "returnParameters": {
-              "id": 72,
+              "id": 75,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "211:0:1"
+              "src": "240:0:1"
             },
-            "scope": 98,
-            "src": "190:65:1",
+            "scope": 105,
+            "src": "219:65:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 96,
+              "id": 103,
               "nodeType": "Block",
-              "src": "337:54:1",
+              "src": "366:74:1",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "arguments": [
-                      {
-                        "argumentTypes": null,
-                        "id": 90,
-                        "name": "_content",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 82,
-                        "src": "355:8:1",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_string_memory_ptr",
-                          "typeString": "string memory"
-                        }
-                      },
-                      {
-                        "argumentTypes": null,
-                        "id": 91,
-                        "name": "date",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 84,
-                        "src": "365:4:1",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_uint256",
-                          "typeString": "uint256"
-                        }
-                      },
-                      {
-                        "argumentTypes": null,
-                        "id": 92,
-                        "name": "month",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 86,
-                        "src": "371:5:1",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_uint256",
-                          "typeString": "uint256"
-                        }
-                      },
-                      {
-                        "argumentTypes": null,
-                        "hexValue": "66616c7365",
-                        "id": 93,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": true,
-                        "kind": "bool",
-                        "lValueRequested": false,
-                        "nodeType": "Literal",
-                        "src": "378:5:1",
-                        "subdenomination": null,
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        },
-                        "value": "false"
-                      }
-                    ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_string_memory_ptr",
-                          "typeString": "string memory"
-                        },
-                        {
-                          "typeIdentifier": "t_uint256",
-                          "typeString": "uint256"
-                        },
-                        {
-                          "typeIdentifier": "t_uint256",
-                          "typeString": "uint256"
-                        },
-                        {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
-                        }
-                      ],
-                      "id": 89,
-                      "name": "details",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 70,
-                      "src": "347:7:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_details_$70_storage_ptr_$",
-                        "typeString": "type(struct Cards.details storage pointer)"
-                      }
-                    },
-                    "id": 94,
+                    "id": 101,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
-                    "kind": "structConstructorCall",
                     "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "347:37:1",
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 92,
+                        "name": "details",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 73,
+                        "src": "376:7:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Detail_$70_storage_$dyn_storage",
+                          "typeString": "struct Cards.Detail storage ref[] storage ref"
+                        }
+                      },
+                      "id": 94,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 93,
+                        "name": "voteCount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 61,
+                        "src": "384:9:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "376:18:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Detail_$70_storage",
+                        "typeString": "struct Cards.Detail storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 96,
+                          "name": "_content",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 85,
+                          "src": "404:8:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 97,
+                          "name": "date",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 87,
+                          "src": "414:4:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 98,
+                          "name": "month",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 89,
+                          "src": "420:5:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "66616c7365",
+                          "id": 99,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "427:5:1",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "false"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        ],
+                        "id": 95,
+                        "name": "Detail",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 70,
+                        "src": "397:6:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_Detail_$70_storage_ptr_$",
+                          "typeString": "type(struct Cards.Detail storage pointer)"
+                        }
+                      },
+                      "id": 100,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "397:36:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Detail_$70_memory",
+                        "typeString": "struct Cards.Detail memory"
+                      }
+                    },
+                    "src": "376:57:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_details_$70_memory",
-                      "typeString": "struct Cards.details memory"
+                      "typeIdentifier": "t_struct$_Detail_$70_storage",
+                      "typeString": "struct Cards.Detail storage ref"
                     }
                   },
-                  "id": 95,
+                  "id": 102,
                   "nodeType": "ExpressionStatement",
-                  "src": "347:37:1"
+                  "src": "376:57:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 97,
+            "id": 104,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "generateCard",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 87,
+              "id": 90,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 82,
+                  "id": 85,
                   "name": "_content",
                   "nodeType": "VariableDeclaration",
-                  "scope": 97,
-                  "src": "283:22:1",
+                  "scope": 104,
+                  "src": "312:22:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1079,10 +1296,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 81,
+                    "id": 84,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "283:6:1",
+                    "src": "312:6:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1093,11 +1310,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 84,
+                  "id": 87,
                   "name": "date",
                   "nodeType": "VariableDeclaration",
-                  "scope": 97,
-                  "src": "307:9:1",
+                  "scope": 104,
+                  "src": "336:9:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1105,10 +1322,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 83,
+                    "id": 86,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "307:4:1",
+                    "src": "336:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1119,11 +1336,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 86,
+                  "id": 89,
                   "name": "month",
                   "nodeType": "VariableDeclaration",
-                  "scope": 97,
-                  "src": "318:10:1",
+                  "scope": 104,
+                  "src": "347:10:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1131,10 +1348,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 85,
+                    "id": 88,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "318:4:1",
+                    "src": "347:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1144,26 +1361,26 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "282:47:1"
+              "src": "311:47:1"
             },
             "returnParameters": {
-              "id": 88,
+              "id": 91,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "337:0:1"
+              "src": "366:0:1"
             },
-            "scope": 98,
-            "src": "261:130:1",
+            "scope": 105,
+            "src": "290:150:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 99,
-        "src": "25:368:1"
+        "scope": 106,
+        "src": "25:417:1"
       }
     ],
-    "src": "0:393:1"
+    "src": "0:442:1"
   },
   "compiler": {
     "name": "solc",
@@ -1171,7 +1388,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-07-22T11:45:15.512Z",
+  "updatedAt": "2019-07-23T13:44:49.910Z",
   "devdoc": {
     "methods": {}
   },
